@@ -3,6 +3,8 @@ package ToDoList;
 public class Task extends ToDoItem {
     private int taskPriority;
 
+    // a constructor that throws an IllegalArgumentException. Check if it is a
+    // checked or an unchecked exception.
     public Task(String description, String location, String date, String time, int taskPriority) {
         super(description, location, date, time);
         if (taskPriority <= 0) {
@@ -12,10 +14,12 @@ public class Task extends ToDoItem {
 
     }
 
+    // returns the taskPriority
     public int getTaskPriority() {
         return taskPriority;
     }
 
+    // sets the taskPriority
     public void setTaskPriority(int taskPriority) {
         this.taskPriority = taskPriority;
     }

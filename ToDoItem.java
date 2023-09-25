@@ -7,6 +7,10 @@ public abstract class ToDoItem {
     private String date;
     private String time;
 
+    // a constructor that throws IllegalArgumentException if the user gives the
+    // wrong inputs.
+    // will be improving on this code to user the necessary checked and uncheck
+    // exceptions. Is a throws clause even required?
     protected ToDoItem(String description, String location, String date, String time) {
 
         if (description == null) {
@@ -28,34 +32,42 @@ public abstract class ToDoItem {
         this.time = time;
     }
 
+    // gets the description of the todoItem
     public String getDescription() {
         return description;
     }
 
+    // sets the description
     public void setDescription(String description) {
         this.description = description;
     }
 
+    // obtains the location
     public String getLocation() {
         return location;
     }
 
+    // sets the location
     public void setLocation(String location) {
         this.location = location;
     }
 
+    // gets the date
     public String getDate() {
         return date;
     }
 
+    // sets the date
     public void setDate(String date) {
         this.date = date;
     }
 
+    // gets the time
     public String getTime() {
         return time;
     }
 
+    // sets the time
     public void setTime(String time) {
         this.time = time;
     }

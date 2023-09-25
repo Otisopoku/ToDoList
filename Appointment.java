@@ -4,6 +4,7 @@ public class Appointment extends ToDoItem {
 
     private String contact;
 
+    // a constructor that throws IllegalArgumentException
     public Appointment(String contact, String description, String location, String date, String time) {
         super(description, location, date, time);
         if (contact == null) {
@@ -12,10 +13,12 @@ public class Appointment extends ToDoItem {
         this.contact = contact;
     }
 
+    // returns the contact
     public String getContact() {
         return contact;
     }
 
+    // sets the contact
     public void setContact(String contact) {
         this.contact = contact;
     }
