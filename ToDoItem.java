@@ -11,6 +11,10 @@ public abstract class ToDoItem {
     // wrong inputs.
     // will be improving on this code to user the necessary checked and uncheck
     // exceptions. Is a throws clause even required?
+    /*
+     * To Do: might be helpful to create seperate classes for that extends the
+     * Exception class to check the individual possible exceptions
+     */
     protected ToDoItem(String description, String location, String date, String time) {
 
         if (description == null) {
