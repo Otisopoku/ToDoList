@@ -1,15 +1,10 @@
-package ToDoList;
 
 public class Appointment extends ToDoItem {
 
     private String contact;
 
-    // a constructor that throws IllegalArgumentException
     public Appointment(String contact, String description, String location, String date, String time) {
         super(description, location, date, time);
-        if (contact == null) {
-            throw new IllegalArgumentException("Contact can not be empty");
-        }
         this.contact = contact;
     }
 
@@ -25,7 +20,16 @@ public class Appointment extends ToDoItem {
 
     @Override
     public String getType() {
-        return "Appointment";
+        return getClass().getName();
+    }
+
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Appointment) {
+            Appointment object = (Appointment) obj;
+            return super.equals(object) && object.contact.equals(contact);
+        }
+        return false;
     }
 
     @Override
