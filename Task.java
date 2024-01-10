@@ -1,16 +1,16 @@
-package ToDoList;
 
-public class Task extends ToDoItem {
+import java.time.LocalDate;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class Task extends ToDoItem implements Comparable<Task> {
     private int taskPriority;
 
-    // a constructor that throws an IllegalArgumentException. Check if it is a
-    // checked or an unchecked exception.
-    public Task(String description, String location, String date, String time, int taskPriority) {
+    public Task(String description, String location, String date, String time) {
         super(description, location, date, time);
-        if (taskPriority <= 0) {
-            throw new IllegalArgumentException("task Priority can not be less than or equal to zero");
-        }
-        this.taskPriority = taskPriority;
+        this.taskPriority = calculatePriority();
 
     }
 
@@ -26,7 +26,33 @@ public class Task extends ToDoItem {
 
     @Override
     public String getType() {
-        return "Task";
+        return getClass().getName();
+    }
+
+    public boolean equals(Object obj) {
+
+        if (obj instanceof Task) {
+            Task object = (Task) obj;
+            return super.equals(object) && taskPriority == object.taskPriority;
+        }
+        return false;
+    }
+
+    private int calculatePriority() { // calculates the priority of the task based on the
+        LocalDate taskDate = LocalDate.parse(getDate(), DateTimeFormatter.ISO_LOCAL_DATE); // fromat 2024-05-30
+        LocalTime taskTime = LocalTime.parse(getTime(), DateTimeFormatter.ISO_TIME); // format 10:35 or 10:35:43
+        LocalDateTime taskDateTime = LocalDateTime.of(taskDate, taskTime);
+        long secondsOfDay = taskDateTime.toLocalTime().toSecondOfDay();
+        int taskPriority = (int) secondsOfDay;
+
+        return taskPriority;
+    }
+
+    @Override
+    public int compareTo(Task task) {
+
+        Integer priority = task.taskPriority;
+        return ((Integer) taskPriority).compareTo(priority);
     }
 
     @Override
