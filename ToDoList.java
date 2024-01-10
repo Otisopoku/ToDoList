@@ -1,28 +1,34 @@
 
-
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ToDoList {
 
-    /*
-     * Will be working on the class and the rest to improve the functionality of
-     * this class
-     */
-    private List<ToDoItem> thingsToDo;
+    // private List<ToDoItem> thingsToDo;
+
+    private HashMap<String, ArrayList<ToDoItem>> thingsToDo;
+    private PriorityQueue<Task> tasks;
 
     // default constructor
     public ToDoList() {
-        thingsToDo = new ArrayList<>();
+        thingsToDo = new HashMap<>();
+        tasks = new PriorityQueue<>();
     }
 
     // adds an a todoItem and returns true if it was successfully added
     public boolean addItem(ToDoItem todo) {
-        if (!thingsToDo.contains(todo)) {
-            thingsToDo.add(todo);
+
+        if (thingsToDo.containsKey(todo.getType())) {
+            thingsToDo.get(todo.getType()).add(todo);
             return true;
         }
-        return false;
+
+        thingsToDo.put(todo.getType(), new ArrayList<ToDoItem>());
+        thingsToDo.get(todo.getType()).add(todo);
+
+        return true;
     }
 
     // obtains all the meetings of the user
