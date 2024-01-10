@@ -1,4 +1,3 @@
-package ToDoList;
 
 public abstract class ToDoItem {
 
@@ -7,29 +6,7 @@ public abstract class ToDoItem {
     private String date;
     private String time;
 
-    // a constructor that throws IllegalArgumentException if the user gives the
-    // wrong inputs.
-    // will be improving on this code to user the necessary checked and uncheck
-    // exceptions. Is a throws clause even required?
-    /*
-     * To Do: might be helpful to create seperate classes for that extends the
-     * Exception class to check the individual possible exceptions
-     */
     protected ToDoItem(String description, String location, String date, String time) {
-
-        if (description == null) {
-            throw new IllegalArgumentException("Description can not be empty");
-        }
-        if (location == null) {
-            throw new IllegalArgumentException("Location can not be empty");
-        }
-        if (date == null) {
-            throw new IllegalArgumentException("Date can not be empty");
-        }
-        if (time == null) {
-            throw new IllegalArgumentException("Time can not be empty");
-        }
-
         this.description = description;
         this.location = location;
         this.date = date;

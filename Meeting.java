@@ -1,4 +1,3 @@
-package ToDoList;
 
 public class Meeting extends ToDoItem {
 
@@ -8,9 +7,6 @@ public class Meeting extends ToDoItem {
     /* A contructor that throws an IllegalArgumentException */
     public Meeting(String host, String description, String location, String date, String time, int guests) {
         super(description, location, date, time);
-        if (guests < 0) {
-            throw new IllegalArgumentException("Guests can not be less than zero");
-        }
         this.host = host;
         this.guests = guests;
     }
@@ -37,7 +33,7 @@ public class Meeting extends ToDoItem {
 
     @Override
     public String getType() {
-        return "Meeting";
+        return getClass().getName();
     }
 
     @Override
